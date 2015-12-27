@@ -3,8 +3,29 @@
 ##快速开始(QUICK START)
 
 ###入门(Geting Started)
+
+简单介绍以下几点
+1. JSFiddle(一款在线代码编辑工具),
+2. 在npm中使用React
+3. 在浏览器中使用React
+4. JSX语法文件转换为JS语法文件
+
 ###教程(Tutorial)
+这个教程通过实现一个评论组件CommentBox(由CommentList和CommentForm组件构成)来贯穿全文,从中你可以学到:
+
+1. 如何构成组件
+2. 学会使用组件的`props`属性和`state`属性
+3. 添加标注(markdown)
+4. 绑定数据
+5. 从服务器获取并绑定数据
+6. 事件绑定
+
 ###React思想(Thinking in React)
+这里通过一个商品的展示和搜索的组件来简述对React的认识,在这里你能够明白如何更好的设计一个`react`组件.
+
+
+
+
 
 ##社区资源(COMMUNITY RESOURCES)
 
@@ -12,11 +33,32 @@
 ###视频(Videos)
 ###辅助工具(Complementary tool)
 
+
+
 ##引导(GUIDES)
 
 ###为什么使用react(Why React?)
+
+1. 简单
+2. 在UI中自动更新修改过的数据
+3. 可组合的组件
+
+
+
 ###显示数据(Displaying Data)
 ####深入JSX(JSX in Depth)
+官方建议使用JSX的原因在于它定义带属性的树形结构有着简洁和相似的语法，React即可呈现html标签也可呈现React组件.html标签呈现使用小写字母,React组件呈现使用大写字母
+```jsx
+
+<div className="foo"/>
+
+<MyComponent somProperty={true}/>
+
+```
+
+
+
+
 ####JSX传播属性(JSX Spread Attributes)
 ####JSX陷阱(JSX Gotchas)
 ###交互和动态UIs(Interactivity and Dynamic UIs)
@@ -41,6 +83,8 @@
 ###上下文(Context)
 
 
+
+
 ##参考(REFERENCE)
 
 ###高级API(Top-Level API)
@@ -54,9 +98,13 @@
 ###Web组件(Web Components)
 ###React DOM 术语( React (Virtual) DOM Terminology)
 
+
+
 ##FLUX
 ###FLUX预览
 ###FLUX TodoMVC教程(FLUX TodoMVC Tutorial)
+
+
 
 ##Tips(技巧)
 ###介绍(Introduction)
