@@ -94,6 +94,9 @@ var FilterableProductTable = React.createClass({
 		});
 	},
 	render:function  () {
+		console.log(this.props.foo);
+		console.log(this.props.name);
+
 		return (
 
 			<div>
@@ -114,7 +117,9 @@ var PRODUCTS = [
 	{category:'Electronics',price:'$199.99',stocked:true,name:'Nexus 7'}
 ];
 
+
+
 ReactDOM.render(
-	<FilterableProductTable products={PRODUCTS}></FilterableProductTable>,
+	<FilterableProductTable  products={PRODUCTS}></FilterableProductTable>,
 	document.getElementById('container')
 	);

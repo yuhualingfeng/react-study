@@ -55,12 +55,183 @@
 <MyComponent somProperty={true}/>
 
 ```
+#####jsx语法和js语法转换
 
+```js
 
+var Nav;
+// Input (JSX):
+var app = <Nav color="blue" />;
+// Output (JS):
+var app = React.createElement(Nav, {color:"blue"});
 
+```
+
+```js
+
+var Nav, Profile;
+// Input (JSX):
+var app = <Nav color="blue"><Profile>click</Profile></Nav>;
+// Output (JS):
+var app = React.createElement(
+  Nav,
+  {color:"blue"},
+  React.createElement(Profile, null, "click")
+);
+
+```
+
+```js
+
+// Input (JSX):
+var Nav = React.createClass({ });
+// Output (JS):
+var Nav = React.createClass({displayName: "Nav", });
+
+```
+#####命名组件
+如果你构建的组件有许多子节点,比如`form`,那么你可能会最终定义许多变量.
+
+```jsx
+
+var Form = MyFormComponent;
+var FormRow = Form.Row;
+var FormLabel = Form.Label;
+var FormInput = Form.Input;
+
+var App =(
+	<Form>
+		<FormRow>
+			<FormLabel></FormLabel>
+			<FormInput></FormInput>
+		</FormRow>
+	</Form>
+);
+```
+更加精简的写法如下：
+
+```jsx
+
+var Form = MyFormComponent;
+var App = (
+
+<Form>
+	<Form.Row>
+		<Form.Label/>
+		<Form.Input/>
+	</Form.Row>
+</Form>
+
+);
+
+```
+除此之外,你还需创建上述代码的子组件.
+
+```jsx
+
+var MyFormComponent = React.createClass({...});
+MyFormComponent.Row = React.createClass({...});
+MyFormComponent.Label = React.createClass({...});
+MyFormComponent.Input = React.createClass({...});
+
+```
+
+#####javascript表达式
+
+######属性表达式
+
+```jsx
+
+var person = <Person name={window.isLoggedIn ? window.name : ''}/>;
+
+```
+
+######布尔属性
+
+```jsx
+
+<input type='button' disabled={true}/>
+
+```
+
+######子表达式
+
+```jsx
+
+var content = <Container>{window.isLoggedIn ? <Nav/> : <Login/>}</Container>
+
+```
+######注释
+
+```jsx
+
+var content =(
+	<Nav>
+	{/* child comment,put {} around */}
+		<Person
+	/* multi
+	   line
+	   comment*/
+	  name={window.isLoggedIn ? window.name :''}  //end of line comment
+		/>
+	</Nav>
+);
+
+```
 
 ####JSX传播属性(JSX Spread Attributes)
+直接改变`props`是无效的
+
+```jsx
+
+var component = <Component/>
+component.props.foo = x; //无效
+component.props.bar = y; //无效
+
+```
+可以通过以下形式赋值
+```jsx
+
+var props = {};
+props.foo = x;
+props.bar = y;
+var component =<Component {...props} foo={'override'}/>
+
+```
+
 ####JSX陷阱(JSX Gotchas)
+
+JSX和HTML看起来很像但是它们有些重大的不同你可能会忽略。例如`style`属性的不同。
+
+######HTML实体
+以下几种方式可以在JSX中嵌入实体
+```jsx
+
+<div>{'First \u00b7 Second'}</div>
+<div>{'First ' + String.fromCharCode(183) + ' Second'}</div>
+<div>{['First ', <span>&middot;</span>, ' Second']}</div>
+<div dangerouslySetInnerHTML={{__html: 'First &middot; Second'}} />
+
+```
+
+######自定义HTML属性
+在原生的html标签中自定义属性需要加`data-`,无障碍属性则不需要
+```jsx
+
+<div data-custom-attribute="foo" />
+
+<div aria-hidden={true} />
+
+<x-my-component custom-attribute="foo" />
+
+```
+
+
+
+
+
+
+
 ###交互和动态UIs(Interactivity and Dynamic UIs)
 ###复合组件(Multiple Components)
 ###可复用组件(Reusable Components)
