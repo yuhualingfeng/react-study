@@ -233,6 +233,41 @@ JSX和HTML看起来很像但是它们有些重大的不同你可能会忽略。�
 
 
 ###交互和动态UIs(Interactivity and Dynamic UIs)
+####例子
+```jsx
+
+var LikeButton = React.createClass({
+    getInitialState: function() {
+        return {
+            liked: false
+        };
+    },
+    handleClick: function(event) {
+        this.setState({
+            liked: !this.state.liked
+        });
+    },
+    render: function() {
+        var text = this.state.liked ? 'like' : 'haven\'t liked';
+        return (
+
+
+            < p onClick = {
+                this.handleClick
+            } >
+
+            You {text} this.Click to toggle.
+
+            < /p>
+
+        );
+    }
+});
+
+```
+####事件处理和组合事件
+
+
 ###复合组件(Multiple Components)
 ###可复用组件(Reusable Components)
 ###传播属性(Transferring Props)
