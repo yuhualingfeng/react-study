@@ -29,8 +29,6 @@
 // Bootstrap + jquery + React + JointJS + ES6
 
 // Less + Gulp + 
-// 
-// Gulp
 
 class List extends React.Component {
 	clickHandler () {
@@ -43,9 +41,9 @@ class List extends React.Component {
 	}
 	render () {
 		return (
-			<div onClick={this.clickHandler.bind(this)}>fdsfsf</div>
+			React.createElement("div", {onClick: this.clickHandler.bind(this)}, "fdsfsf")
 		);
 	}
 }
 
-ReactDOM.render(<List name={2+1}/>,document.getElementById('example'));
+ReactDOM.render(React.createElement(List, {name: 2+1}),document.getElementById('example'));
